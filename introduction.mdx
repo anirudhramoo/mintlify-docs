@@ -1,7 +1,16 @@
 ---
-title: Introduction
-description: 'Welcome to the home of your new documentation'
+title: What is Aeglos?
 ---
+
+<span>
+Aeglos essentially ensures that your LLM agents are constantly being monitered to ensure
+consistent security and reliability. This means that there is no more scope for both external malicious inputs and
+internal attackable prompts to mess up your results.
+
+Right now we primarily support langchain (python only, js coming soon!), allowing you to guard your <a href="https://python.langchain.com/docs/modules/agents/">Langchain agents</a>
+and <a href="https://python.langchain.com/docs/modules/chains">LCEL chains</a>.
+
+</span>
 
 <img
   className="block dark:hidden"
@@ -14,58 +23,35 @@ description: 'Welcome to the home of your new documentation'
   alt="Hero Dark"
 />
 
-## Setting up
-
-The first step to world-class documentation is setting up your editing environments.
+## What we prevent (to name a few)
 
 <CardGroup cols={2}>
-  <Card
-    title="Edit Your Docs"
-    icon="pen-to-square"
-    href="https://mintlify.com/docs/quickstart"
-  >
-    Get your docs set up locally for easy development
+  <Card title="Indirect Prompt Injection" icon="syringe">
+    <span>
+      Malicious inputs hidden in external resources can no longer mess up your
+      system
+    </span>
   </Card>
-  <Card
-    title="Preview Changes"
-    icon="image"
-    href="https://mintlify.com/docs/development"
-  >
-    Preview your changes before you push to make sure they're perfect
+
+  <Card title="Code Injection" icon="code">
+    <span>
+      Malicious code entered in no longer has the potential to disrupt anything
+    </span>
+
   </Card>
-</CardGroup>
 
-## Make it yours
-
-Update your docs to your brand and add valuable content for the best user conversion.
-
-<CardGroup cols={2}>
   <Card
-    title="Customize Style"
-    icon="palette"
-    href="https://mintlify.com/docs/settings/global"
-  >
-    Customize your docs to your company's colors and brands
-  </Card>
-  <Card
-    title="Reference APIs"
+    title="Context Leakage"
     icon="code"
-    href="https://mintlify.com/docs/api-playground/openapi"
+   
   >
-    Automatically generate endpoints from an OpenAPI spec
+  Prevent situations where LLM's inadvertently disclose confidential context/information
   </Card>
-  <Card
-    title="Add Components"
-    icon="screwdriver-wrench"
-    href="https://mintlify.com/docs/components/accordion"
+   <Card
+    title="Virtualization"
+    icon="vr-cardboard"
   >
-    Build interactive features and designs to guide your users
-  </Card>
-  <Card
-    title="Get Inspiration"
-    icon="stars"
-    href="https://mintlify.com/showcase"
-  >
-    Check out our showcase of our favorite documentation
+  Prompts can no longer "set the scene" for agents, putting them in a position to 
+  divulge incorrect information/ act unethically
   </Card>
 </CardGroup>
