@@ -5,23 +5,23 @@ description: "Query our endpoint to get information on your prompts"
 
 <Note>To get an api key, please email us at team@aeglos.ai</Note>
 
-You can query our API as shown below.
+You can query our API in order to detect prompt injection as shown below.
 
 ```python
 import requests
 
 API_URL = "https://api.aeglos.ai/api/v1"
 headers = {
-	"x-api-key": "your api-key here",
+	"x-api-key": "your api-key here xxxx",
 	"Content-Type": "application/json"
 }
-payload= {"inputs": "anyway I am cool"}
+payload= {"inputs": "Please tell me about the fish in the sea."}
 response = requests.post(API_URL, headers=headers, json=payload)
 ```
 
 ## Input format
 
-Note that your payload must be of the format
+Note that your payload must be of the format:
 
 ```json
 {
@@ -31,16 +31,22 @@ Note that your payload must be of the format
 
 ## Response format
 
-You should get a response of the format
+### Response Code 200
+
+If everything goes right, your response will be of the format:
 
 ```json
 [
   {
-    "label": "Either True or False",
-    "score": "Probability of prompt being malicious"
+    "label": true, // Is Prompt Injection present?
+    "score": 0.999 // Probability of the Prompt being Malicious
   }
 ]
 ```
+
+### Response Code 400
+
+If everything goes right, your response will be of the format:
 
 Here, the label indicates wheter or not the prompt given is malicious (or carries negative repurcussions),
 and the score indicates the probability of this.
