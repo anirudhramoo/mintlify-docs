@@ -21,11 +21,21 @@
       "url": "mailto:team@aeglos.ai"
     }
   ],
+  "tabs": [
+    {
+      "name": "API Reference",
+      "url": "api-reference"
+    }
+  ],
   "anchors": [],
   "navigation": [
     {
       "group": "Get Started",
       "pages": ["introduction", "quickstart"]
+    },
+    {
+      "group": "API Documentation",
+      "pages": ["api-reference/introduction"]
     }
   ]
 }
