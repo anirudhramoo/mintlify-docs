@@ -39,10 +39,12 @@ If everything goes right, your response will be of the format:
 [
   {
     "label": true, // Is Prompt Injection present?
-    "score": 0.999 // Probability of the Prompt being Malicious
+    "score": 0.999 // Classification Probability
   }
 ]
 ```
+
+Here, the label indicates wheter or not the prompt given is malicious (or carries negative repurcussions), and the score indicates the probability of this indication.
 
 ### Response Code 400
 
@@ -52,10 +54,9 @@ If your input is malformed, you will recieve an error code:
 {
   "error": "Body needs to provide a inputs key, recieved: {'in' : 'tell me about cats'}"
 }
-
 ```
 
-Here, the error specifies that the input should be specified with the key of ```inputs``` instead of ```in```.
+Here, the error specifies that the input should be specified with the key of ```"inputs"``` to function properly.
 
 ### Response Code 403
 
@@ -64,8 +65,7 @@ If your API key is invalid, you will recieve an message informing you that you c
 ```json
 {
   "message": "Forbidden"
-  }
-
+}
 ```
 
 To fix this error, please ensure you have a valid API key.
@@ -78,7 +78,6 @@ If you recieve an error code specifing a "Bad Gateway", it means that the Prompt
 {
   "error": "Bad Gateway"
 }
-
 ```
 
 If you recieve this error, please try using the API again in a few minutes.
