@@ -46,15 +46,48 @@ If everything goes right, your response will be of the format:
 
 ### Response Code 400
 
-If everything goes right, your response will be of the format:
+If your input is malformed, you will recieve an error code:
 
-Here, the label indicates wheter or not the prompt given is malicious (or carries negative repurcussions),
-and the score indicates the probability of this.
+```json
+{
+  "error": "Body needs to provide a inputs key, recieved: {'in' : 'tell me about cats'}"
+}
+
+```
+
+Here, the error specifies that the input should be specified with the key of ```inputs``` instead of ```in```.
+
+### Response Code 403
+
+If your API key is invalid, you will recieve an message informing you that you cannot access the API:
+
+```json
+{
+  "message": "Forbidden"
+  }
+
+```
+
+To fix this error, please ensure you have a valid API key.
+
+### Response Code 502
+
+If you recieve an error code specifing a "Bad Gateway", it means that the Prompt Injection Model is spinning up:
+
+```json
+{
+  "error": "Bad Gateway"
+}
+
+```
+
+If you recieve this error, please try using the API again in a few minutes.
+
 
 ## Try it out
 
 You can test it yourself with the below command
-(Note: We are using a custom rate limited API key here. Please email us at team@aeglos.ai to get your own key).
+(Note: We are using a custom rate limited API key here. Please email us at team@aeglos.ai to get a your own key).
 
 ```bash
 curl -X POST "https://api.aeglos.ai/api/v1" \
