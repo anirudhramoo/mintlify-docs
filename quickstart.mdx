@@ -23,7 +23,7 @@ pip install aeglos
 <CodeGroup>
 
 ```bash python
-from aeglos import guard, guard_shield
+from aeglos import guard, guard_chain
 ```
 
 </CodeGroup>
@@ -37,7 +37,7 @@ llm = ChatOpenAI(model="gpt-4", temperature=0)
 tools = [] # your tools here
 
 agent = create_openai_functions_agent(llm, tools, prompt)
-agent_executor=guard(agent,tools)
+agent_executor=guard(agent = agent, tools = tools, api_key = 'xxxx')
 ```
 
 You can use this `agent_executor` as you would regularly.
@@ -58,7 +58,7 @@ prompt = ChatPromptTemplate.from_messages([
 
 chain = prompt | llm
 
-chain=guard(chain)
+chain=guard_chain(chain = chain, api_key = 'xxxx')
 
 
 print(chain.invoke({"input": "how can aeglos help with protection?"}))
@@ -84,18 +84,22 @@ prompt3 = ChatPromptTemplate.from_template(
 
 model = OpenAI()
 chain1 = guard_chain(prompt1 | model | StrOutputParser())
-chain2 = guard_chain(
+chain2 = guard_chain(chain = 
     {"city": chain1}
     | prompt2
     | model
-    | StrOutputParser()
+    | StrOutputParser(),
+    api_key = 'xxxx'
+
 )
 
 chain3 = guard_chain(
+    chain = 
     {"food": chain2, "language": itemgetter("language")}
     | prompt3
     | model
-    | StrOutputParser()
+    | StrOutputParser(),
+    api_key = 'xxxx'
 )
 
 # A malicious prompt that would get flagged
